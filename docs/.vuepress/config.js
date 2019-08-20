@@ -18,9 +18,9 @@ module.exports = {
         sideBar: 'auto',
         sidebarDepth: 3,
         lastUpdated: '上次更新',
-        nav: [
-            {
-                text: '博客', link: '/blog',
+        nav: [{
+                text: '博客',
+                link: '/blog',
                 items: [
                     { text: '前端', link: '/frontEnd/' },
                     { text: '后端', link: '/backEnd/' },
@@ -43,18 +43,20 @@ module.exports = {
             '/project/': getBlogSidebar('项目'),
         },
     },
-    plugins: {
-        '@vuepress/medium-zoom': true,
-        '@vuepress/back-to-top': true,
-        '@vuepress/pwa': {
-            serviceWorker: true,
-            updatePopup: {
-                message: "遭遇！野生的博客之神！",
-                buttonText: "点我更新"
-            },
-            popupComponent: 'update-popup',
-        },
-    }
+    plugins: [
+        // '@vuepress/medium-zoom'
+        // '@vuepress/medium-zoom': true,
+        // '@vuepress/back-to-top': true,
+        // '@vuepress/nprogress':true,
+        // '@vuepress/pwa': {
+        //     serviceWorker: true,
+        //     updatePopup: {
+        //         message: "",
+        //         buttonText: "点我更新"
+        //     },
+        //     popupComponent: 'update-popup',
+        // },
+    ]
 }
 
 
@@ -69,6 +71,14 @@ function getBlogSidebar(type) {
                     children: [
                         ['./JavaScript/JS-Array', 'Js 数组'],
                         ['./JavaScript/JS-HOF', 'Js 高阶函数 HOF'],
+                        ['./JavaScript/JS-AOP', 'Js 切面 AOP'],
+                        ['./JavaScript/Curry', '柯里化'],
+                    ]
+                },
+                {
+                    title: 'Vue',
+                    children: [
+                        ['./vue/component', '组件'],
                     ]
                 },
             ]
