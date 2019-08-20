@@ -79,8 +79,29 @@ function getBlogSidebar(type) {
                     title: 'Vue',
                     children: [
                         ['./vue/component', '组件'],
+                        ['./vue/Instance', '实例'],
+                    ]
+                },
+                {
+                    title: 'Axios',
+                    children: [
+                        ['./axios/request', '请求头'],
+                        ['./axios/cancel', '取消请求'],
+                    ]
+                }
+            ]
+            break;
+        case '后端':
+            return [
+                ['', '欢迎'],
+                {
+                    title: 'base',
+                    children: [
+                        ['./base/router', '路由'],
+                        ['./base/middleware', '中间件'],
                     ]
                 },
             ]
+            break;
     }
 }
