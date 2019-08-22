@@ -4,7 +4,7 @@ home: true
 heroText: chmi 的手记
 tagline: 学而不思则罔 & 思而不学则殆
 actionText: Get Wiki →
-actionLink: /FAQ/
+actionLink: /frontEnd/
 features:
 - title: Blog - 博客
   details: 基于对知识点进行 整理，吸收，吐纳，归档。

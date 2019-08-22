@@ -80,6 +80,8 @@ function getBlogSidebar(type) {
                     children: [
                         ['./vue/component', '组件'],
                         ['./vue/Instance', '实例'],
+                        ['./vue/install', '部署'],
+                        ['./vue/config', '配置'],
                     ]
                 },
                 {
