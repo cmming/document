@@ -16,5 +16,34 @@ Qs.stringify(params, {arrayFormat: 'brackets'}
 
 ```
 
+## 文件下载
+
+
+```javascript
+request({
+    url: "/user/export",
+    method: "get",
+    responseType: "arraybuffer"
+    }).then(res => {
+    if (res.status === 200 && res.data) {
+        // 这个请求头可能找不到,在后端设置请求头,
+        // header('Access-Control-Expose-Headers:Content-Disposition');
+        var disposition = res.headers["content-disposition"];
+        var fileName = decodeURI(
+        disposition.substring(
+            disposition.indexOf("filename=") + 9,
+            disposition.length
+        )
+        );
+        let blob = new Blob([res.data], { type: res.headers["content-type"] });
+        let link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+        link.remove();
+    }
+});
+```
+
 
 

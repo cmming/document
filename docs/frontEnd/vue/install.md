@@ -8,7 +8,7 @@
 
 2. 打包应用 镜像
 
-```
+```docker
 # alpine 基础镜像很小 推荐使用
 FROM nginx:alpine
 
@@ -29,7 +29,7 @@ WORKDIR /var/www/html
 
 4. 添加nginx 配置文件
 
-```
+```nginx
 server {
     # 开启 gzip
     gzip on;
@@ -95,22 +95,101 @@ server {
 
 5. 构建镜像
 
-```
+```sh
 # 镜像名称 dockerhubName/imageName:imageTag 方便将 image 推送到 docker hub
-docker build -t chmi294225707/ngixn:vue_beta_v1 .
+docker build -t chmi294225707/nginx:vue_beta_v1 .
 
 ## 将镜像推送到服务器
-docker push chmi294225707/ngixn:vue_beta_v1
+docker push chmi294225707/nginx:vue_beta_v1
 
 ```
 
 6. 拉取镜像 启动服务
 
-```
+```sh
 # 拉起镜像
-docker pull chmi294225707/ngixn:vue_beta_v1
+docker pull chmi294225707/nginx:vue_beta_v1
 # 创建服务
-docker run -d -p 180:80 --name vue-server chmi294225707/ngixn:vue_beta_v1
+docker run -d -p 180:80 --name vue-server chmi294225707/nginx:vue_beta_v1
 ```
 
 
+## docker-composer 
+
+> 方便多容器的集中部署和管理
+
+1.编写 docker-composer.yml 文件
+
+```yml
+version: '3.5'
+
+services:
+  nginx_server:
+    image: nginx:alpine
+    ports:
+      - 981:80
+    restart: unless-stopped
+    volumes:
+      - ./upstream.conf:/etc/nginx/conf.d/default.conf
+
+  vue_demo_server:
+    build: ../
+    restart: unless-stopped
+    volumes:
+      - ../dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+# volumes:
+#   dist:
+
+
+```
+
+### 负载均衡服务器的配置
+
+```nginx
+# upstream.conf
+upstream fn {
+    server vue_demo_server:80;
+}
+
+server {
+    listen       80;
+    location / {  
+        proxy_pass   http://fn;
+        index  index.html index.htm;  
+    } 
+}
+
+
+```
+
+### web 服务的 nginx 配置
+
+```nginx
+server {
+    listen 80;
+    # gzip config
+    gzip on;
+    gzip_min_length 1k;
+    gzip_comp_level 9;
+    gzip_types text/plain text/css text/javascript application/json application/javascript application/x-javascript application/xml;
+    gzip_vary on;
+    gzip_disable "MSIE [1-6]\.";
+
+    root /usr/share/nginx/html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+
+```
+
+
+2. 服务 多开 为web 服务进行负载均衡
+
+```nginx
+# 说明 会同时开两个 uam_web_server 服务 nginx.conf 要修改
+docker-compose up -d --scale vue_demo_server=3 --build
+```
