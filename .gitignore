@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw?
 tmp
 package-lock.json
+dist
