@@ -24,23 +24,21 @@ module.exports = {
                 items: [
                     { text: '前端', link: '/frontEnd/' },
                     { text: '后端', link: '/backEnd/' },
-                    { text: '工具', link: '/tools/' },
+                    // { text: '工具', link: '/tools/' },
                 ]
             },
-            { text: '学习', link: '/learn/' },
-            { text: '随笔', link: '/thought/' },
-            { text: '项目', link: '/project/' },
+            // { text: '学习', link: '/learn/' },
+            // { text: '随笔', link: '/thought/' },
+            // { text: '项目', link: '/project/' },
             { text: 'Todo', link: '/todo/' },
 
         ],
         sidebar: {
             '/frontEnd/': getBlogSidebar('前端'),
             '/backEnd/': getBlogSidebar('后端'),
-            '/tools/': getBlogSidebar('工具'),
-            '/interest/': getBlogSidebar('兴趣'),
-            '/thought/': getBlogSidebar('随笔'),
-            '/words/': getBlogSidebar('手记'),
-            '/project/': getBlogSidebar('项目'),
+            '/todo/': getBlogSidebar('todo'),
+            // '/thought/': getBlogSidebar('随笔'),
+            // '/project/': getBlogSidebar('项目'),
         },
     },
     plugins: [
@@ -82,6 +80,7 @@ function getBlogSidebar(type) {
                         ['./vue/Instance', '实例'],
                         ['./vue/install', '部署'],
                         ['./vue/config', '配置'],
+                        ['./vue/travis-cl', 'travis-cl'],
                     ]
                 },
                 {
@@ -97,10 +96,21 @@ function getBlogSidebar(type) {
             return [
                 ['', '欢迎'],
                 {
-                    title: 'base',
+                    title: 'laravel',
                     children: [
-                        ['./base/router', '路由'],
-                        ['./base/middleware', '中间件'],
+                        ['./laravel/router', '路由'],
+                        ['./laravel/middleware', '中间件'],
+                    ]
+                },
+            ]
+            break;
+        case 'todo':
+            return [
+                ['', '欢迎'],
+                {
+                    title: '2019',
+                    children: [
+                        ['./2019/09', '201909'],
                     ]
                 },
             ]
