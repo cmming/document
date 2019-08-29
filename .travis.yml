@@ -14,5 +14,5 @@ install:
 script:
 - yarn docs:build
 after_success:
-- cd /home
-- scp -o stricthostkeychecking=no -r ./* root@chenming.club:/usr/local/nginx/html/blog.lbinin.com
+- cd docs/.vuepress/dist
+- scp -o stricthostkeychecking=no -r ./* root@chenming.club:/home/document/docker/blog-server && cd /home/document/docker && docker-compose up -d --build
