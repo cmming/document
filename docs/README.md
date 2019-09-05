@@ -3,7 +3,7 @@ home: true
 // heroImage: /img/logo.jpg
 heroText: chmi 的手记
 tagline: 学而不思则罔 & 思而不学则殆
-actionText: Get Wiki →
+actionText: 开始 →
 actionLink: /frontEnd/
 features:
 - title: Blog - 博客

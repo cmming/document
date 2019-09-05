@@ -100,6 +100,7 @@ function getBlogSidebar(type) {
                     children: [
                         ['./laravel/router', '路由'],
                         ['./laravel/middleware', '中间件'],
+                        ['./laravel/OAuth2', 'OAuth2'],
                     ]
                 },
             ]
