@@ -84,6 +84,12 @@ function getBlogSidebar(type) {
                     ]
                 },
                 {
+                    title: 'ElementUI',
+                    children: [
+                        ['./ElementUI/basic', '基础结构'],
+                    ]
+                },
+                {
                     title: 'Axios',
                     children: [
                         ['./axios/request', '请求头'],
