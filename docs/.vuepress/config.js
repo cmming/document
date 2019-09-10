@@ -88,6 +88,7 @@ function getBlogSidebar(type) {
                     children: [
                         ['./ElementUI/basic', '基础结构'],
                         ['./ElementUI/use', '看看官方如何使用自己的框架'],
+                        ['./ElementUI/packages', '看看如何封装组件'],
                     ]
                 },
                 {

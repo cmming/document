@@ -19,3 +19,49 @@ router.afterEach(route => {
   });
 }
 ```
+
+
+## 样式导入
+
+> 一次性将所有的样式导入
+import 'packages/theme-chalk/src/index.scss';
+
+
+## 组件导入
+
+> 一次性将所有的组件导入
+
+import Element from 'main/index.js';
+
+
+
+## 如何按组件模块导入
+
+> 借助 webpack 插件 (babel-plugin-component)[https://github.com/ElementUI/babel-plugin-component]，也是ElementUI 出的的。
+
+```js
+// 将 语法进行转换
+import { Button } from 'components'
+
+// 自动导入 js 和 css 导入
+require('components/lib/styleLibraryName/index.css')
+var button = require('components/lib/styleLibraryName/button.css')
+```
+然后，将 .babelrc 修改为：
+
+```js 
+{
+  "presets": [["es2015", { "modules": false }]],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+
