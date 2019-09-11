@@ -74,6 +74,13 @@ function getBlogSidebar(type) {
                     ]
                 },
                 {
+                    title: 'Sass',
+                    children: [
+                        ['./Sass/common', '常用'],
+                        ['./Sass/naming', '命名'],
+                    ]
+                },
+                {
                     title: 'Vue',
                     children: [
                         ['./vue/component', '组件'],
