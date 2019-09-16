@@ -27,8 +27,8 @@ module.exports = {
                     // { text: '工具', link: '/tools/' },
                 ]
             },
-            // { text: '学习', link: '/learn/' },
-            // { text: '随笔', link: '/thought/' },
+            { text: '算法', link: '/algorithm/' },
+            { text: '随笔', link: '/thought/' },
             // { text: '项目', link: '/project/' },
             { text: 'Todo', link: '/todo/' },
 
@@ -37,7 +37,8 @@ module.exports = {
             '/frontEnd/': getBlogSidebar('前端'),
             '/backEnd/': getBlogSidebar('后端'),
             '/todo/': getBlogSidebar('todo'),
-            // '/thought/': getBlogSidebar('随笔'),
+            '/algorithm/': getBlogSidebar('算法'),
+            '/thought/': getBlogSidebar('随笔'),
             // '/project/': getBlogSidebar('项目'),
         },
     },
@@ -83,6 +84,8 @@ function getBlogSidebar(type) {
                 {
                     title: 'Vue',
                     children: [
+                        ['./vue/response', '响应式原理'],
+                        ['./vue/eventLoop', 'eventloop'],
                         ['./vue/component', '组件'],
                         ['./vue/Instance', '实例'],
                         ['./vue/install', '部署'],
@@ -96,6 +99,7 @@ function getBlogSidebar(type) {
                         ['./ElementUI/basic', '基础结构'],
                         ['./ElementUI/use', '看看官方如何使用自己的框架'],
                         ['./ElementUI/packages', '看看如何封装组件'],
+                        ['./ElementUI/component', '封装组件'],
                     ]
                 },
                 {
@@ -127,6 +131,42 @@ function getBlogSidebar(type) {
                     title: '2019',
                     children: [
                         ['./2019/09', '201909'],
+                    ]
+                },
+            ]
+            break;
+        case '算法':
+            return [
+                ['', '欢迎'],
+                {
+                    title: '动态规划',
+                    children: [
+                        ['./Dynamic', '动态规划'],
+                    ]
+                },
+            ]
+            break;
+        case '随笔':
+            return [
+                ['', '欢迎'],
+                {
+                    title: 'css',
+                    children: [
+                        ['./css/cssSelector', '选择器'],
+                        ['./css/BFC', 'BFC'],
+                        ['./css/layout', 'layout'],
+                    ]
+                },
+                {
+                    title: 'cros',
+                    children: [
+                        ['./cros', '跨域'],
+                    ]
+                },
+                {
+                    title: '优化',
+                    children: [
+                        ['./indexSeo', '首屏优化'],
                     ]
                 },
             ]
