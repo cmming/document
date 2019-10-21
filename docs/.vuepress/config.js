@@ -75,10 +75,22 @@ function getBlogSidebar(type) {
                     ]
                 },
                 {
+                    title: 'Webpack',
+                    children: [
+                        ['./Webpack/concepts', '概念'],
+                    ]
+                },
+                {
                     title: 'Sass',
                     children: [
                         ['./Sass/common', '常用'],
                         ['./Sass/naming', '命名'],
+                    ]
+                },
+                {
+                    title: 'Jest',
+                    children: [
+                        ['./Jest/common', 'jest'],
                     ]
                 },
                 {
@@ -91,6 +103,14 @@ function getBlogSidebar(type) {
                         ['./vue/install', '部署'],
                         ['./vue/config', '配置'],
                         ['./vue/travis-cl', 'travis-cl'],
+                        ['./vue/testUtils', '单元测试testUtils'],
+                    ]
+                },
+                {
+                    title: 'Axios',
+                    children: [
+                        ['./axios/request', '请求头'],
+                        ['./axios/cancel', '取消请求'],
                     ]
                 },
                 {
@@ -100,13 +120,6 @@ function getBlogSidebar(type) {
                         ['./ElementUI/use', '看看官方如何使用自己的框架'],
                         ['./ElementUI/packages', '看看如何封装组件'],
                         ['./ElementUI/component', '封装组件'],
-                    ]
-                },
-                {
-                    title: 'Axios',
-                    children: [
-                        ['./axios/request', '请求头'],
-                        ['./axios/cancel', '取消请求'],
                     ]
                 }
             ]
