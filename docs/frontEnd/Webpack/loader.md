@@ -1,7 +1,3 @@
-## loader 
-
-> 处理常见的静态资源。
-
 ##  1.[处理js](https://www.babeljs.cn/setup#installation)
 >js的编译则关系到另外一个生态，那就是babel；点击上面连接，即可
 
@@ -106,3 +102,134 @@ cnpm install --save-dev @babel/plugin-transform-runtime
 4.[查询browserslistrc](https://browserl.ist/)
 
 5.[@babel/plugin-syntax-dynamic-import](https://webpack.docschina.org/guides/code-splitting/#%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5-dynamic-imports-)
+
+
+## 2.[处理图片和字体文件](https://webpack.docschina.org/loaders/url-loader/)
+
+>它将文件转换为base64 URI。
+
+```shell
+cnpm install url-loader --save-dev
+```
+
+```js
+{
+    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    use: [
+        {
+            loader: 'url-loader',
+            options: {
+                //图片 小于 10240B 
+                limit: 10240,
+                name: '[name]_[hash].[ext]',
+                outputPath: "images/"
+            }
+        }
+    ]
+}
+```
+### 注意
+
+>webpack中file-loader和url-loader的关系,url-loader把资源文件转换为URL，file-loader也是一样的功能.不同之处在于url-loader更加灵活，它可以把小文件转换为base64格式的URL，从而减少网络请求次数。url-loader依赖file-loader。在大多数情况下，使用url-loader准没错。
+
+
+## 3.[处理样式](https://webpack.docschina.org/loaders/url-loader/)
+
+```shell
+cnpm install --save-dev style-loader css-loader sass-loader postcss-loader
+```
+
+    1.style-loader:解析style里面的样式
+    2.css-loader：解析 import进来的css
+    3.sass-loader：解析 sass
+    4.postcss-loader：为样式自动处理功能，例如Autoprefixer ，此时可以生成 postcss.config.js文件作为其的独立配置文件
+
+```js
+//scss 多个 loader同时工作的时候，从下往上指定
+{
+    test: /\.css|\.scss$/,  // 正则匹配所有.css后缀的样式文件
+    use: ['style-loader',
+        {
+            loader: 'css-loader',
+            options: {
+                importLoaders: 2,// 让所有的 scss 都会重新使用 sass-loader postcss-loader 进行处理
+                modules: true //样式模块化 避免全局污染
+            }
+        },
+        "sass-loader",
+        "postcss-loader"] // 使用这两个loader来加载样式文件
+},
+//css
+{
+    test: /\.css$/,  // 正则匹配所有.css后缀的样式文件
+    use: ['style-loader',
+        "css-loader",
+        "postcss-loader"] // 使用这两个loader来加载样式文件
+}
+```
+
+## 总结
+
+> 最终的配置文件如下
+```js
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+    entry: './src/index.js',
+    devServer: {
+        host: 'localhost',
+        port: '8883',
+        open: true,
+        overlay: true,
+    },
+    module: {
+        rules: [{
+                test: /\.(png|jpe?g|gif|eot|woff2?|ttf|svg)(\?.*)?$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        //图片 小于 10240B 
+                        limit: 10240,
+                        name: '[name]_[hash].[ext]',
+                        outputPath: "images/"
+                    }
+                }]
+            },
+            {
+                test: /\.css|\.scss$/, // 正则匹配所有.css后缀的样式文件
+                use: ['style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 2, // 让所有的 scss 都会重新使用 sass-loader postcss-loader 进行处理
+                                modules: true //样式模块化 避免全局污染
+                            }
+                        },
+                        "sass-loader",
+                        "postcss-loader"
+                    ] // 使用这两个loader来加载样式文件
+            },
+            //css
+            {
+                test: /\.css$/, // 正则匹配所有.css后缀的样式文件
+                use: ['style-loader',
+                        "css-loader",
+                        "postcss-loader"
+                    ] // 使用这两个loader来加载样式文件
+            },
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html'
+        })
+    ]
+}
+```
+> 文件结构
+![文件结构](./webpack_3.png)
+
+
+

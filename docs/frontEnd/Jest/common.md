@@ -97,5 +97,13 @@ describe('Scoped / Nested block', () => {
 ## 8. 快照
 > 确保ui不会发生变化。
 
+## 8. 覆盖率
+> 将测试覆盖率生成静态的配置文件。
+```shell
+jest --collectCoverage
+```
+
+
+
 
 

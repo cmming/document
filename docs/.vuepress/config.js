@@ -80,6 +80,7 @@ function getBlogSidebar(type) {
                         ['./Webpack/concepts', '概念'],
                         ['./Webpack/init', '从零开始'],
                         ['./Webpack/loader', 'loader'],
+                        ['./Webpack/optimize', '优化'],
                     ]
                 },
                 {
