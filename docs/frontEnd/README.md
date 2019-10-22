@@ -1,3 +1,3 @@
 # 前端
 
-<detail tab="frontEnd" :menu="['JavaScript', 'Sass','Jest','Vue','Axios','ElementUI']"/>
+<detail tab="frontEnd" :menu="['JavaScript','Webpack', 'Sass','Jest','Vue','Axios','ElementUI']"/>
