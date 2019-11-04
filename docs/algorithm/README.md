@@ -1,3 +1,3 @@
 # 算法
 
-<detail tab="algorithm" :menu="['动态规划']"/>
+<detail tab="algorithm" :menu="['动态规划','斐波那契']"/>

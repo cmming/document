@@ -75,6 +75,12 @@ function getBlogSidebar(type) {
                     ]
                 },
                 {
+                    title: 'css',
+                    children: [
+                        ['./css/flex-box', 'flexbox'],
+                    ]
+                },
+                {
                     title: 'Webpack',
                     children: [
                         ['./Webpack/concepts', '概念'],
@@ -160,6 +166,12 @@ function getBlogSidebar(type) {
                         ['./Dynamic', '动态规划'],
                     ]
                 },
+                {
+                    title: '斐波那契',
+                    children: [
+                        ['./Fibonacci', '斐波那契'],
+                    ]
+                },
             ]
             break;
         case '随笔':
@@ -171,6 +183,7 @@ function getBlogSidebar(type) {
                         ['./css/cssSelector', '选择器'],
                         ['./css/BFC', 'BFC'],
                         ['./css/layout', 'layout'],
+                        ['./css/meta', 'meta'],
                     ]
                 },
                 {
