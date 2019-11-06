@@ -161,15 +161,15 @@ function getBlogSidebar(type) {
             return [
                 ['', '欢迎'],
                 {
-                    title: '动态规划',
-                    children: [
-                        ['./Dynamic', '动态规划'],
-                    ]
-                },
-                {
                     title: '斐波那契',
                     children: [
                         ['./Fibonacci', '斐波那契'],
+                    ]
+                },
+                {
+                    title: '动态规划',
+                    children: [
+                        ['./Dynamic', '动态规划'],
                     ]
                 },
             ]
