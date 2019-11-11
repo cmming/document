@@ -78,6 +78,8 @@ function getBlogSidebar(type) {
                     title: 'css',
                     children: [
                         ['./css/flex-box', 'flexbox'],
+                        ['./css/taobao', '淘宝移动'],
+                        ['./css/vw', 'vw布局'],
                     ]
                 },
                 {
