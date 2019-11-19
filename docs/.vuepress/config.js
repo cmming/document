@@ -132,6 +132,18 @@ function getBlogSidebar(type) {
                         ['./ElementUI/packages', '看看如何封装组件'],
                         ['./ElementUI/component', '封装组件'],
                     ]
+                },
+                {
+                    title: 'React',
+                    children: [
+                        ['./React/install', '创建项目'],
+                    ]
+                },
+                {
+                    title: 'Jenkins',
+                    children: [
+                        ['./Jenkins/install', '创建项目'],
+                    ]
                 }
             ]
             break;
