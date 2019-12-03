@@ -43,7 +43,10 @@ module.exports = {
         },
     },
     plugins: [
-        // '@vuepress/medium-zoom'
+        '@vuepress/medium-zoom',
+        '@vuepress/back-to-top',
+        '@vuepress/nprogress',
+        '@vuepress/pwa'
         // '@vuepress/medium-zoom': true,
         // '@vuepress/back-to-top': true,
         // '@vuepress/nprogress':true,
@@ -155,7 +158,13 @@ function getBlogSidebar(type) {
                     children: [
                         ['./laravel/router', '路由'],
                         ['./laravel/middleware', '中间件'],
+                        ['./laravel/validate', '验证'],
+                        ['./laravel/JWT', 'JWT'],
                         ['./laravel/OAuth2', 'OAuth2'],
+                        ['./laravel/laravel-echo-server', 'laravel-echo-server'],
+                        ['./laravel/laravel-horizon', 'laravel-horizon'],
+                        ['./laravel/laravel-swoole', 'laravel-swoole'],
+                        ['./laravel/run', '运行'],
                     ]
                 },
             ]

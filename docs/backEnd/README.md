@@ -1,3 +1,3 @@
-# 前端
+# 后端
 
-<detail tab="frontEnd" :menu="['base']"/>
+<detail tab="backEnd" :menu="['laravel']"/>
