@@ -75,6 +75,9 @@ function getBlogSidebar(type) {
                         ['./JavaScript/JS-HOF', 'Js 高阶函数 HOF'],
                         ['./JavaScript/JS-AOP', 'Js 切面 AOP'],
                         ['./JavaScript/Curry', '柯里化'],
+                        ['./JavaScript/debounce', '防抖和节流'],
+                        ['./JavaScript/setMap', 'set和map'],
+                        ['./JavaScript/Proxy', 'Proxy'],
                     ]
                 },
                 {
@@ -145,7 +148,13 @@ function getBlogSidebar(type) {
                 {
                     title: 'Jenkins',
                     children: [
-                        ['./Jenkins/install', '创建项目'],
+                        ['./Jenkins/install', 'Jenkins'],
+                    ]
+                },
+                {
+                    title: '常见问题',
+                    children: [
+                        ['./private/common', '常见问题'],
                     ]
                 }
             ]

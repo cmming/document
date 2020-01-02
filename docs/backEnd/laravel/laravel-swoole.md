@@ -99,7 +99,7 @@ server {
  ```
 
 
-## 6. 修改项目配置文件
+## 5. 修改项目配置文件
 
 ```
 #swoole 是否热加载（生产环境改成false）
@@ -109,7 +109,7 @@ SWOOLE_HTTP_HOST=workspace
 SWOOLE_HTTP_DAEMONIZE=true
 ```
 
- ## 5. 重启nginx服务和开启 swoole
+ ## 6. 重启nginx服务和开启 swoole
 
  ```
 docker-compose up -d nginx
@@ -119,3 +119,8 @@ docker-compose exec workspace bash
     
 php artisan swoole:http start
  ```
+
+
+ ## 7. 注意
+
+ > 启动swoole 会很占用cpu (如果主机是使用cpu积分消耗型，会很快把cpu积分耗尽，造成主机卡顿)
