@@ -24,7 +24,7 @@ module.exports = {
                 items: [
                     { text: '前端', link: '/frontEnd/' },
                     { text: '后端', link: '/backEnd/' },
-                    // { text: '工具', link: '/tools/' },
+                    { text: 'typescript', link: '/typescript/chapter1/' },
                 ]
             },
             { text: '算法', link: '/algorithm/' },
@@ -36,6 +36,7 @@ module.exports = {
         sidebar: {
             '/frontEnd/': getBlogSidebar('前端'),
             '/backEnd/': getBlogSidebar('后端'),
+            '/typescript/': getBlogSidebar('typescript'),
             '/todo/': getBlogSidebar('todo'),
             '/algorithm/': getBlogSidebar('算法'),
             '/thought/': getBlogSidebar('随笔'),
@@ -154,7 +155,13 @@ function getBlogSidebar(type) {
                 {
                     title: '常见问题',
                     children: [
-                        ['./private/common', '常见问题'],
+                        ['./private/html', 'html'],
+                        ['./private/css', 'css'],
+                        ['./private/js', 'js'],
+                        ['./private/es6', 'es6'],
+                        ['./private/vue', 'vue'],
+                        ['./private/all', '综合'],
+                        ['./private/algorithm', '算法'],
                     ]
                 }
             ]
@@ -178,6 +185,62 @@ function getBlogSidebar(type) {
                 },
             ]
             break;
+        case 'typescript':
+            return [
+                {
+                  title: '初识 TypeScript',
+                  collapsable: false,
+                  children: [
+                    ['./chapter1/', 'Introduction'],
+                    './chapter1/install',
+                    './chapter1/start'
+                  ]
+                },
+                {
+                  title: 'TypeScript 常用语法',
+                  collapsable: false,
+                  children: [
+                    './chapter2/type',
+                    './chapter2/declare',
+                    './chapter2/interface',
+                    './chapter2/class',
+                    './chapter2/function',
+                    './chapter2/generic',
+                    './chapter2/inference',
+                    './chapter2/advance'
+                  ]
+                },
+                {
+                  title: 'ts-axios 项目初始化',
+                  collapsable: false,
+                  children: [
+                    './chapter3/require',
+                    './chapter3/init',
+                    './chapter3/base'
+                  ]
+                },
+                {
+                  title: 'ts-axios 基础功能实现',
+                  collapsable: false,
+                  children: [
+                    './chapter4/url',
+                    './chapter4/data',
+                    './chapter4/header',
+                    './chapter4/response',
+                    './chapter4/response-header',
+                    './chapter4/response-data'
+                  ]
+                },
+                {
+                  title: 'ts-axios 异常情况处理',
+                  collapsable: false,
+                  children: [
+                    './chapter5/error',
+                    './chapter5/enhance'
+                  ]
+                }
+              ]
+              break;
         case 'todo':
             return [
                 ['', '欢迎'],
