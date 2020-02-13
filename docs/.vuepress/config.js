@@ -183,6 +183,15 @@ function getBlogSidebar(type) {
                         ['./laravel/run', '运行'],
                     ]
                 },
+                {
+                    title: 'mysql',
+                    children: [
+                        ['./mysql/benchmarks', '基准测试'],
+                        ['./mysql/structuralOptimization', '结构优化'],
+                        ['./mysql/performanceManage', '性能管理'],
+                        ['./mysql/optimization', '优化'],
+                    ]
+                },
             ]
             break;
         case 'typescript':
