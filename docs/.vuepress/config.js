@@ -72,6 +72,7 @@ function getBlogSidebar(type) {
                 {
                     title: 'JavaScript',
                     children: [
+                        ['./JavaScript/module', '模块化'],
                         ['./JavaScript/JS-Array', 'Js 数组'],
                         ['./JavaScript/JS-HOF', 'Js 高阶函数 HOF'],
                         ['./JavaScript/JS-AOP', 'Js 切面 AOP'],
@@ -122,6 +123,8 @@ function getBlogSidebar(type) {
                         ['./vue/config', '配置'],
                         ['./vue/travis-cl', 'travis-cl'],
                         ['./vue/testUtils', '单元测试testUtils'],
+                        // sourceCode
+                        ['./vue/sourceCode', '源码分析'],
                     ]
                 },
                 {
@@ -162,6 +165,7 @@ function getBlogSidebar(type) {
                         ['./private/vue', 'vue'],
                         ['./private/all', '综合'],
                         ['./private/algorithm', '算法'],
+                        ['./private/test', '测试'],
                     ]
                 }
             ]
