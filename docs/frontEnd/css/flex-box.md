@@ -67,7 +67,13 @@ align-items: stretch|center|flex-start|flex-end|baseline|initial|inherit;
 
 #### 7.align-content 单行的时候不生效，多行的时候效果和align-items效果类似，容器内必须有多行的项目，该属性才能渲染出效果。
 
->align-content 多行的情况下才会生效，且每行都有间距；
+>align-content 多行的情况下才会生效，且每行都有间距。[参考文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content)
+
+```css
+.container {
+  align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe;
+}
+```
 
 
 ### 子元素
@@ -99,16 +105,36 @@ align-items: stretch|center|flex-start|flex-end|baseline|initial|inherit;
 }
 ```
 
-#### 4.flex：属性用于设置或检索弹性盒模型对象的子元素如何分配空间。
+#### 4. flex-basis:剩余空间分配之前元素的默认大小 [参考文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis)
 
->flex 属性是 flex-grow、flex-shrink 和 flex-basis 属性的简写属性。
+> 应用场景
+ - 1.bootstrap4 中的 col-sm-2 就是 flex: 0 0 16.666%，达到控制宽度控制
+ - 2.bootstrap4 中的 col-sm-auto 就是 flex: 0 0 auto，达到可变宽度的弹性空间
+```css
+.item {
+  flex-basis: <length> | auto; /* default auto */
+}
+```
+
+#### 5.flex：属性用于设置或检索弹性盒模型对象的子元素如何分配空间。
+
+>flex 属性是 flex-grow、flex-shrink 和 flex-basis 属性的简写属性。通常只用写第一个值，后面两个属性都是auto.
 
 ```css
 flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
 ```
 
 
-#### 5.align-self 属性定义flex子项单独在侧轴（纵轴）方向上的对齐方式。
+#### 6.align-self 属性定义flex子项单独在侧轴（纵轴）方向上的对齐方式。 [参考文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)
+
+> 用于覆盖默认的对其方式。
+
+
+
+#### 总结
+
+父容器：只用记住display、flex-flow、justify-content、align-items、align-content。
+子元素：只用记住order、flex、align-self。（重点：order和flex-grow:也就是flex的的第一个值,）
 
 
 ## 常用案例
@@ -302,3 +328,4 @@ flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
 
 ## 参考文章
 [ A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background)
+[详解CSS中flex布局-面向未来的网页设计理念](https://www.z01.com/help/web/3234.shtml)

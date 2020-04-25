@@ -80,6 +80,7 @@ function getBlogSidebar(type) {
                         ['./JavaScript/debounce', '防抖和节流'],
                         ['./JavaScript/setMap', 'set和map'],
                         ['./JavaScript/Proxy', 'Proxy'],
+                        ['./JavaScript/Promise', 'Promise'],
                     ]
                 },
                 {
@@ -104,6 +105,12 @@ function getBlogSidebar(type) {
                     children: [
                         ['./Sass/common', '常用'],
                         ['./Sass/naming', '命名'],
+                    ]
+                },
+                {
+                    title: 'Bootstrap4',
+                    children: [
+                        ['./bootstrap4/', '介绍'],
                     ]
                 },
                 {
@@ -158,6 +165,7 @@ function getBlogSidebar(type) {
                 {
                     title: '常见问题',
                     children: [
+                        ['./private/vscode', 'vscode'],
                         ['./private/html', 'html'],
                         ['./private/css', 'css'],
                         ['./private/js', 'js'],
