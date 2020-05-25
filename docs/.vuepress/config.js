@@ -30,7 +30,8 @@ module.exports = {
         { text: '算法', link: '/algorithm/' },
         { text: '随笔', link: '/thought/' },
         // { text: '项目', link: '/project/' },
-        { text: 'Todo', link: '/todo/' },
+        // { text: 'Todo', link: '/todo/' },
+        { text: '读书', link: '/reading/' },
 
         ],
         sidebar: {
@@ -40,6 +41,7 @@ module.exports = {
             '/todo/': getBlogSidebar('todo'),
             '/algorithm/': getBlogSidebar('算法'),
             '/thought/': getBlogSidebar('随笔'),
+            '/reading/': getBlogSidebar('读书'),
             // '/project/': getBlogSidebar('项目'),
         },
     },
@@ -393,5 +395,17 @@ function getBlogSidebar(type) {
                 },
             ]
             break;
+            case '读书':
+                return [
+                    ['', '欢迎'],
+                    {
+                        title: '现代前端技术解析',
+                        children: [
+                            // ['./12/12', '协议'],
+                            ['./现代前端技术解析/协议', '第二章前端与协议'],
+                        ]
+                    },
+                ]
+                break;
     }
 }

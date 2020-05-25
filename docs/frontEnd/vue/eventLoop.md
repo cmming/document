@@ -76,3 +76,4 @@ timeout
 ## 参考文章
 
 [Vue源码分析 - nextTick](https://github.com/ziyi2/ziyi2.github.io/issues/5)
+[Tasks, microtasks, queues and schedules（译）](https://segmentfault.com/a/1190000014812771?utm_source=channel-hottest)
