@@ -23,8 +23,9 @@ module.exports = {
             link: '/blog',
             items: [
                 { text: '前端', link: '/frontEnd/' },
-                { text: '后端', link: '/backEnd/' },
                 { text: 'typescript', link: '/typescript/chapter1/' },
+                { text: 'java', link: '/backEnd/java/' },
+                { text: 'php', link: '/backEnd/php/' },
             ]
         },
         { text: '算法', link: '/algorithm/' },
@@ -37,6 +38,8 @@ module.exports = {
         sidebar: {
             '/frontEnd/': getBlogSidebar('前端'),
             '/backEnd/': getBlogSidebar('后端'),
+            '/backEnd/java/': getBlogSidebar('java'),
+            '/backEnd/php/': getBlogSidebar('php'),
             '/typescript/': getBlogSidebar('typescript'),
             '/todo/': getBlogSidebar('todo'),
             '/algorithm/': getBlogSidebar('算法'),
@@ -180,9 +183,8 @@ function getBlogSidebar(type) {
                 }
             ]
             break;
-        case '后端':
+        case 'php':
             return [
-                ['', '欢迎'],
                 {
                     title: 'laravel',
                     children: [
@@ -208,6 +210,12 @@ function getBlogSidebar(type) {
                 },
             ]
             break;
+        case 'java':
+            return [
+                {
+                    title: ''
+                }
+            ]
         case 'typescript':
             return [
                 {
@@ -403,6 +411,9 @@ function getBlogSidebar(type) {
                         children: [
                             // ['./12/12', '协议'],
                             ['./现代前端技术解析/协议', '第二章前端与协议'],
+                            ['./现代前端技术解析/前端三层与应用', '第三章前端三层与应用'],
+                            // 前端项目与技术实现
+                            ['./现代前端技术解析/前端项目与技术实现', '第五章前端项目与技术实现'],
                         ]
                     },
                 ]
