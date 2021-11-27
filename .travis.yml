@@ -15,6 +15,6 @@ script:
 - yarn docs:build
 after_success:
 - cd docs/.vuepress
-- scp -o stricthostkeychecking=no -r ./dist root@chenming.club:/home/document/docker/blog-server
+- scp -o stricthostkeychecking=no -r ./dist root@150.158.87.3:/home/document/docker/blog-server
 - ssh root@150.158.87.3 -o stricthostkeychecking=no 'cd /home/document/docker &&
   docker-compose up -d --build'
