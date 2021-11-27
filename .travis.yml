@@ -7,8 +7,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_b4fa19891c6b_key -iv $encrypted_b4fa19891c6b_iv
   -in id_rsa_blog.enc -out ~/.ssh/id_rsa_blog -d
 - chmod 600 ~/.ssh/id_rsa_blog
-- echo -e "Host chenming.club\n\tHostName 150.158.87.3\n\tStrictHostKeyChecking no\n\tIdentityFile
-  ~/.ssh/id_rsa_blog.enc" >> ~/.ssh/config
+- echo -e "Host chenming.club\n\tHostName 150.158.87.3\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/id_rsa_blog" >> ~/.ssh/config
 - yarn global add vuepress
 install:
 - yarn install
