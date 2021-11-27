@@ -6,7 +6,7 @@ services:
     build: ./blog-server
     restart: unless-stopped
     ports:
-      - 4406:3306
+      - 80:80
     networks:
       - nginx_net
 
