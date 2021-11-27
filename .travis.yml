@@ -4,10 +4,14 @@ node_js:
 addons:
   ssh_known_hosts: chenming.club
 before_install:
-- openssl aes-256-cbc -K $encrypted_62b781e8019c_key -iv $encrypted_62b781e8019c_iv
-  -in id_rsa_blog.enc -out ~/.ssh/id_rsa_blog -d
-- chmod 600 ~/.ssh/id_rsa_blog
-- echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/id_rsa_blog" >> ~/.ssh/config
+- openssl aes-256-cbc -K $encrypted_a66719f084e3_key -iv $encrypted_a66719f084e3_iv
+  -in id_rsa_vuedemo.enc -out ~\/.ssh/id_rsa_vuedemo -d
+- chmod 600 ~/.ssh/id_rsa_vuedemo
+# - openssl aes-256-cbc -K $encrypted_62b781e8019c_key -iv $encrypted_62b781e8019c_iv
+#   -in id_rsa_blog.enc -out ~/.ssh/id_rsa_blog -d
+# - chmod 600 ~/.ssh/id_rsa_blog
+- echo -e "Host chenming.club\n\tHostName 150.158.87.3\n\tStrictHostKeyChecking no\n\tIdentityFile
+  ~/.ssh/id_rsa_blog" >> ~/.ssh/config
 - yarn global add vuepress
 install:
 - yarn install
@@ -16,4 +20,8 @@ script:
 after_success:
 - cd docs/.vuepress
 - scp -o stricthostkeychecking=no -r ./dist root@chenming.club:/home/document/docker/blog-server
-- ssh root@chenming.club -o stricthostkeychecking=no 'cd /home/document/docker && docker-compose up -d --build'
+- ssh root@chenming.club -o stricthostkeychecking=no 'cd /home/document/docker &&
+  docker-compose up -d --build'
+# dd:
+# - openssl aes-256-cbc -K $encrypted_a66719f084e3_key -iv $encrypted_a66719f084e3_iv
+#   -in id_rsa_vuedemo.enc -out ~\/.ssh/id_rsa_vuedemo -d
