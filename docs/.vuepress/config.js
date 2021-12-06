@@ -26,6 +26,7 @@ module.exports = {
                 { text: 'typescript', link: '/typescript/chapter1/' },
                 { text: 'java', link: '/backEnd/java/' },
                 { text: 'php', link: '/backEnd/php/' },
+                { text: 'linux', link: '/backEnd/linux/' }
             ]
         },
         { text: '算法', link: '/algorithm/' },
@@ -40,6 +41,7 @@ module.exports = {
             '/backEnd/': getBlogSidebar('后端'),
             '/backEnd/java/': getBlogSidebar('java'),
             '/backEnd/php/': getBlogSidebar('php'),
+            '/backEnd/linux/': getBlogSidebar('linux'),
             '/typescript/': getBlogSidebar('typescript'),
             '/todo/': getBlogSidebar('todo'),
             '/algorithm/': getBlogSidebar('算法'),
@@ -215,6 +217,17 @@ function getBlogSidebar(type) {
             return [
                 {
                     title: ''
+                }
+            ];
+            break;
+        case 'linux':
+            return [
+                {
+                    title: 'docker',
+                    children: [
+                        ['./docker/image', '镜像'],
+                        ['./docker/container', '容器'],
+                    ]
                 }
             ]
         case 'typescript':
