@@ -205,6 +205,7 @@ function getBlogSidebar(type) {
                         ['./mysql/benchmarks', '基准测试'],
                         ['./mysql/structuralOptimization', '结构优化'],
                         ['./mysql/performanceManage', '性能管理'],
+                        ['./mysql/recovery', '数据恢复'],
                         ['./mysql/optimization', '优化'],
                     ]
                 },
