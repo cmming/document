@@ -228,6 +228,13 @@ function getBlogSidebar(type) {
                         ['./docker/image', '镜像'],
                         ['./docker/container', '容器'],
                     ]
+                },
+                {
+                    title: 'k8s',
+                    children: [
+                        ['./k8s/install', '安装'],
+                        ['./k8s/dashboard', '面板安装'],
+                    ]
                 }
             ]
         case 'typescript':

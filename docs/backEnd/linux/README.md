@@ -1,3 +1,3 @@
 # linux
 
-<detail tab="linux" :menu="['docker']"/>
+<detail tab="linux" :menu="['docker', 'k8s']"/>
