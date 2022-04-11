@@ -1,4 +1,4 @@
-## 环境
+# 环境
 
 > laravel 6.2  + laravel-echo-server 1.6
 
