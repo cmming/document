@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '10'
+- '12'
 addons:
   ssh_known_hosts: 150.158.87.3
 before_install:
@@ -13,6 +13,7 @@ install:
 - yarn install
 script:
 - yarn docs:build
+- travis_wait 30 sleep 1800 &
 after_success:
 - cd docs/.vuepress
 - scp -o stricthostkeychecking=no -r ./dist root@150.158.87.3:/home/document/docker/blog-server
