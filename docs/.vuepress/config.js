@@ -24,7 +24,7 @@ module.exports = {
             items: [
                 { text: '前端', link: '/frontEnd/' },
                 { text: 'typescript', link: '/typescript/chapter1/' },
-                { text: 'java', link: '/backEnd/java/' },
+                { text: 'java', link: '/java/' },
                 { text: 'php', link: '/backEnd/php/' },
                 { text: 'linux', link: '/backEnd/linux/' }
             ]
@@ -38,8 +38,7 @@ module.exports = {
         ],
         sidebar: {
             '/frontEnd/': getBlogSidebar('前端'),
-            '/backEnd/': getBlogSidebar('后端'),
-            '/backEnd/java/': getBlogSidebar('java'),
+            '/java/': getBlogSidebar('java'),
             '/backEnd/php/': getBlogSidebar('php'),
             '/backEnd/linux/': getBlogSidebar('linux'),
             '/typescript/': getBlogSidebar('typescript'),
@@ -187,6 +186,7 @@ function getBlogSidebar(type) {
             break;
         case 'php':
             return [
+                ['', '欢迎'],
                 {
                     title: 'laravel',
                     children: [
@@ -215,8 +215,26 @@ function getBlogSidebar(type) {
             break;
         case 'java':
             return [
+                ['', '欢迎'],
                 {
-                    title: ''
+                    title: 'spring',
+                    children: [
+                        ['./spring/plugin', '插件'],
+                        ['./spring/security', 'springboot security'],
+                    ]
+                },
+                {
+                    title: '常见问题',
+                    children: [
+                        ['./private/data', '数据类型问题'],
+                    ]
+                },
+                {
+                    title: 'neo4j',
+                    children: [
+                        ['./neo4j/summary', '问题总结'],
+                        ['./neo4j/apoc', 'apoc'],
+                    ]
                 }
             ];
             break;
