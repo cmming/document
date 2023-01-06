@@ -253,6 +253,13 @@ function getBlogSidebar(type) {
                         ['./k8s/install', '安装'],
                         ['./k8s/dashboard', '面板安装'],
                     ]
+                },
+                // harbor
+                {
+                    title: 'harbor',
+                    children: [
+                        ['./harbor/install', '安装'],
+                    ]
                 }
             ]
         case 'typescript':
