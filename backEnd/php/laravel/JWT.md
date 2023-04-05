@@ -1,3 +1,0 @@
-# Json Web Token
-
-### 
