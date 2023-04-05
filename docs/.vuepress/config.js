@@ -1,6 +1,7 @@
 module.exports = {
     title: 'chmi',
     contentLoading: true,
+    base:'document',
     configureWebpack: {
         resolve: {
             alias: {
