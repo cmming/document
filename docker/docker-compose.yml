@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+
+  blog_server:
+    build: ./blog-server
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - nginx_net
+
+
+networks:
+  nginx_net:
+    external: true

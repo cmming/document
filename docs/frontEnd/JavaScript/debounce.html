@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>debounce 防抖</title>
+</head>
+
+<body>
+    <div id="debounce" style="height: 200px; background: #dfdfdf"></div>
+    <script>
+        function debounce1(func, s) {
+            var timeout // 创建一个标记用来存放定时器的返回值
+            return function() {
+                var context = this;
+                var args = arguments;
+                clearTimeout(timeout) // 每当用户输入的时候把前一个 setTimeout clear 掉
+                timeout = setTimeout(function() { // 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
+                    func.apply(context, args) // (此时的this指向window, 关键在第一个参数，1.为了确保上下文环境为当前的this;2.保证 event 对象 )
+                }, s);
+            }
+        }
+
+        function debounce(func, wait, immediate) {
+            var timeout, result
+
+            var debounced = function() {
+                var context = this
+                var args = arguments
+                if (timeout) {
+                    // 清空掉还来不及执行的函数
+                    clearTimeout(timeout)
+                }
+                // 立即执行
+                if (immediate) {
+                    var callNow = !timeout
+                        // 第一次是立即执行，后面必须间隔 指定时间后才能执行
+                    timeout = setTimeout(function() {
+                        timeout = null;
+                    }, wait)
+                    if (callNow) {
+                        result = func.apply(context, args)
+                    }
+                } else {
+                    timeout = setTimeout(function() {
+                        func.apply(context, args)
+                    }, wait)
+                }
+
+                return result
+            }
+
+            debounced.cancel = function() {
+                clearTimeout(timeout);
+                timeout = null;
+            };
+
+            return debounced;
+        }
+
+
+
+        function sayHi(e) {
+            console.log('防抖成功', e, arguments);
+        }
+
+        var inp = document.getElementById('debounce');
+        var action = debounce(sayHi, 1000, false)
+
+        inp.onmousemove = action
+        // 点击标识立即重新计算
+        inp.onclick = function(){
+            action.cancel()
+        }
+    </script>
+</body>
+
+</html>

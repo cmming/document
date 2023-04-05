@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- 新 Bootstrap4 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+  <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>bootstrap4</title>
+</head>
+
+<body>
+  <h2>测试 h标签的上边距</h2>
+
+  测试 <abbr title="People's Republic of China">PRC简称或缩写</abbr> .
+
+  <blockquote>
+    用来定义引用
+  </blockquote>
+
+  <b>粗体</b>
+
+  <p>Do not forget to buy <mark>milk</mark> today.</p>
+
+  这段文本包含 <sub>下标</sub>
+  <br>
+  这段文本包含 <sup>上标</sup>
+  <br>
+  <a href="//:www.baidu.com">百度</a>
+  <br>
+  <a>百度</a>
+
+
+  <pre>
+    &lt;html&gt;
+    
+    &lt;head&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;loadxmldoc.js&quot;&gt;
+    &lt;/script&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+    
+      &lt;script type=&quot;text/javascript&quot;&gt;
+        xmlDoc=<a href="dom_loadxmldoc.asp">loadXMLDoc</a>(&quot;books.xml&quot;);
+        document.write(&quot;xmlDoc is loaded, ready for use&quot;);
+      &lt;/script&gt;
+    
+    &lt;/body&gt;
+    
+    &lt;/html&gt;
+
+    <code>一段电脑代码</code>
+  </pre>
+
+<br>
+<code>
+  一段电脑代码
+  <a href="//:www.baidu.com">百度</a>
+</code>
+<br>
+  键入 <kbd>quit</kbd> 来退出程序，或者键入 <kbd>menu</kbd> 来返回主菜单。
+
+
+  <figure>
+    <p>用作文档中插图的图像：黄浦江上的的卢浦大桥</p>
+    <img src="shanghai_lupu_bridge.jpg" width="350" height="234" />
+  </figure>
+
+  <p style="color: var(--blue);">测试root伪类常量</p>
+
+  隐藏template,并且template的作用如下 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template
+  <template><div>
+    测试 template里面的html片段
+  </div></template>
+
+  <input type="search" name="" id="">
+
+  列表样式
+
+  <ul class="list-unstyled">
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>Consectetur adipiscing elit</li>
+    <li>Integer molestie lorem at massa</li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Nulla volutpat aliquam velit
+      <ul>
+        <li>Phasellus iaculis neque</li>
+        <li>Purus sodales ultricies</li>
+        <li>Vestibulum laoreet porttitor sem</li>
+        <li>Ac tristique libero volutpat at</li>
+      </ul>
+    </li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+  </ul>
+
+  <ul class="list-inline">
+    <li class="list-inline">列表之一</li>
+    <li class="list-inline">列表之二</li>
+    <li class="list-inline">列表之三</li>
+  </ul>
+
+  <ul class="list-inline">
+    <li class="list-inline-item">列表之一</li>
+    <li class="list-inline-item">列表之二</li>
+    <li class="list-inline-item">列表之三</li>
+  </ul>
+
+  <!--  -->
+
+  <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+
+  <hr>
+  
+  <h2>code</h2>
+  <h3>内联代码 code</h3>
+  <code>&lt;section&gt;</code> 代码嵌入到文本段中。
+
+  <h3>代码块  pre</h3>
+    <pre>
+      <code>&lt;p&gt;Sample text here...&lt;/p&gt;
+    &lt;p&gt;And another line of sample text here...&lt;/p&gt;
+    </code>
+  </pre>
+    
+  <h3>快捷键 kbd</h3>
+  <kbd>tab</kbd>
+
+  <hr>
+
+  <h2>image</h2>
+
+  <h3>响应式图片</h3>
+
+  <img src="..." class="img-fluid" alt="Responsive image">
+
+  <h3>缩略图</h3>
+
+  <h3>h5 picture</h3>
+
+  ​<picture>
+    <source src="大规格图片.jpg"  media="(min-width: 800px)" >
+    <source src="中规格图片.jpg"  media="(min-width: 600px)">
+    <source src="小规格图片.jpg">
+    <img src="通用图片.jpg" alt="这是当浏览器不支持picture标签时显示的图片">
+  </picture>
+
+  <div class="figure">
+    <img class="figure-img" src="https://www.baidu.com/img/bd_logo1.png" alt="">
+    <div class="figure-caption">figure-img</div>
+  </div>
+
+  <h2>table</h2>
+  <h3>自定义主题table</h3>
+  <table class="table table-sm table-secondary">
+    <thead>
+      <tr class="table-warning">
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>响应式table</h3>
+  <table class="table table-sm table-secondary table-responsive-sm">
+    <thead>
+      <tr class="table-warning">
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Username</th>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Username</th><th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>栅格化</h2>
+  <hr>
+  
+</body>
+
+</html>
