@@ -219,6 +219,7 @@ function getBlogSidebar(type) {
                 {
                     title: 'spring',
                     children: [
+                        ['./spring/customPlugin', '自定义插件'],
                         ['./spring/plugin', '插件'],
                         ['./spring/security', 'springboot security'],
                     ]
