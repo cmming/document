@@ -1,6 +1,5 @@
 module.exports = {
     title: 'chmi',
-    base: 'docs/.vuepress/dist',
     contentLoading: true,
     configureWebpack: {
         resolve: {
