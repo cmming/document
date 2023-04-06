@@ -232,6 +232,13 @@ function getBlogSidebar(type) {
                     ]
                 },
                 {
+                    title: '代码集锦',
+                    children: [
+                        ['./code/map', 'map相关的代码'],
+                        ['./code/list', 'list相关的代码'],
+                    ]
+                },
+                {
                     title: 'neo4j',
                     children: [
                         ['./neo4j/summary', '问题总结'],
