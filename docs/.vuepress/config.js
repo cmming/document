@@ -221,6 +221,7 @@ function getBlogSidebar(type) {
                     title: 'spring',
                     children: [
                         ['./spring/customPlugin', '自定义插件'],
+                        ['./spring/strategy', '新增策略模式'],
                         ['./spring/plugin', '插件'],
                         ['./spring/security', 'springboot security'],
                     ]
@@ -234,8 +235,9 @@ function getBlogSidebar(type) {
                 {
                     title: '代码集锦',
                     children: [
-                        ['./code/map', 'map相关的代码'],
-                        ['./code/list', 'list相关的代码'],
+                        ['./code/optional', 'optional'],
+                        ['./code/map', 'map'],
+                        ['./code/list', 'list'],
                     ]
                 },
                 {

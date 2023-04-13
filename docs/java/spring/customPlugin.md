@@ -1,14 +1,14 @@
-## 自定义插件
+## 目标
 
-> 目标：实现一个springboot starter插件，实现自定义的功能
+> 实现一个springboot starter插件，实现自定义的功能
 
 
-### springboot starter 机制
+## springboot starter 机制
 
 > starter让我们摆脱了各种依赖库的处理，需要配置各种信息的困扰。SpringBoot会自动通过classpath路径下的类发现需要的Bean，并注册进IOC容器。SpringBoot提供了针对日常企业应用研发各种场景的spring-boot-starter依赖模块。所有这些依赖模块都遵循着约定成俗的默认配置，并允许我们调整这些配置，即遵循“约定大于配置”的理念。
 
 
-### 自定义starter的开发流程
+## 自定义starter的开发流程
 
 1、命令规范，官方使用的是spring-boot-starter-xxx，xxx为自定义的starter名称；非官方使用的是xxx-spring-boot-starter，xxx为自定义的starter名称
 
