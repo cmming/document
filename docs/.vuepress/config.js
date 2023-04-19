@@ -238,6 +238,7 @@ function getBlogSidebar(type) {
                         ['./code/optional', 'optional'],
                         ['./code/map', 'map'],
                         ['./code/list', 'list'],
+                        ['./code/stream', 'stream'],
                     ]
                 },
                 {
