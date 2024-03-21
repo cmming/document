@@ -218,27 +218,36 @@ function getBlogSidebar(type) {
             return [
                 ['', '欢迎'],
                 {
+                    title: 'java基础',
+                    children: [
+                        ['./code/optional', 'optional'],
+                        ['./code/map', 'map'],
+                        ['./code/list', 'list'],
+                        ['./code/stream', 'stream'],
+                    ]
+                },
+                {
                     title: 'spring',
                     children: [
+                        ['./spring/spel', 'spel'],
+                        ['./spring/jpa', 'jpa'],
                         ['./spring/customPlugin', '自定义插件'],
                         ['./spring/strategy', '新增策略模式'],
                         ['./spring/plugin', '插件'],
                         ['./spring/security', 'springboot security'],
+                        ['./spring/restemplate', 'restemplate'],
+                        ['./spring/validate', '参数校验'],
+                        ['./spring/cache', '缓存'],
+                        ['./spring/logback', '线程'],
+                        ['./spring/thead', '线程'],
+                        ['./spring/mapstruct', 'mapstruct'],
+                        ['./spring/rabbitmq', 'rabbitmq'],
                     ]
                 },
                 {
                     title: '常见问题',
                     children: [
                         ['./private/data', '数据类型问题'],
-                    ]
-                },
-                {
-                    title: '代码集锦',
-                    children: [
-                        ['./code/optional', 'optional'],
-                        ['./code/map', 'map'],
-                        ['./code/list', 'list'],
-                        ['./code/stream', 'stream'],
                     ]
                 },
                 {

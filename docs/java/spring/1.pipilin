@@ -1,0 +1,109 @@
+pipeline {
+    agent any
+    
+    // tools {
+    //     nodejs "node10"
+    // }
+
+    stages {
+        stage('git pull') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev_yjpl']],
+                doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+                userRemoteConfigs: [[credentialsId: 'zhouyao', url: 'git@git2.ygsoft.com:ygyjy/eikg_web.git']]])
+                echo 'git pull'
+            }
+        }
+        stage('构建') {
+            steps {
+                nodejs(nodeJSInstallationName: 'node12') {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        //sh 'node -v'
+                        //sh 'npm -v'
+                        //sh "rm -fr ./console_new_yjpl/node_modules"
+                        //sh "cp -r /tmp/node_modules/console_new_yjpl/node_modules ./console_new_yjpl"
+                        //sh "chmod -R 777 ./console_new_yjpl/node_modules"
+                        // sh "rm -fr ./console_new_yjpl/node_modules/node-sass"
+                        // vue-loader
+                        //  sh "rm -fr ./console_new_yjpl/node_modules/vue-loader"
+                        // sh "cd ./console_new_yjpl"
+                        // sh "rm -fr ./console_new_yjpl/node_modules"
+                        // sh "cd ./console_new_yjpl && npm i --save-dev node-sass --sass_binary_path=/opt/node-v10.14.2-linux-x64/linux-x64-64_binding.node"
+                        // sh "node -p \"[process.platform, process.arch, process.versions.modules].join('-')\"" 
+                        // sh 'npm config set registry=http://ygsoft-npm.ygsoft.com/repository/ygsoft-npm/'
+                        // sh "npm cache clean --force && cd ./console_new_yjpl  && npm install --no-package-lock --registry=http://ygsoft-npm.ygsoft.com/repository/ygsoft-npm/ && ls -l && npm run build && ls -l"
+                    }   
+                    sh 'rm -rf /tmp/html/*'
+                    sh 'cp -ri ./console_new_yjpl/dist/* /tmp/html/'
+                }
+            }
+        
+        // stage('Build') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'node12') {
+        //             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+        //                 sh "npm config set registry=https://jtmaven.ygsoft.com/repository/ygsoft-npm/"
+        //                 sh 'node -v'
+        //                 sh 'npm -v'
+        //                 sh "rm -fr ./console_new_yjpl/node_modules"
+        //                 sh "cd ./console_new_yjpl && npm install && ls -l && npm run build && ls -l"
+                        
+        //             } 
+        //             sh 'rm -rf /tmp/html/*'
+        //             sh 'mkdir /tmp/html/*'
+        //             sh 'cp -ri ./console_new_yjpl/dist/* /tmp/html/'
+        //         }
+        //     }
+         
+        // }
+        // stage('Build') {
+        //     steps {
+        //         sh "npm config set registry=https://jtmaven.ygsoft.com/repository/ygsoft-npm/"
+        //         sh 'node -v'
+        //         // sh 'npm config ls'
+        //         echo 'Building..'
+        //         sh "cp -r /tmp/node_modules ./console_new_4"
+        //         sh "cd ./console_new_4 && ls -l && npm -v"
+        //     }
+        // }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                script {     
+                  echo 'Deploy..'
+  	                def remote = [:]
+  	                remote.name = '10.121.61.3'
+  	                remote.host = '10.121.61.3'
+                    remote.allowAnyHosts = true
+                    withCredentials([usernamePassword(credentialsId: '10.121.61.3', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        remote.user = "${username}"
+                        remote.password = "${password}"
+                    }
+                    sshCommand remote: remote, command: "pwd"
+                    // sshPut remote: remote, from: './console_new_4/dist/', into: '/data2/kg/nginx/html'
+                    // sshCommand remote: remote, command:'rm -rf /data2/kg/jenkins/jenkins_home/workspace/test-mvn@3/kg.parent/kg.web/src/main/resources/META-INF/resources/necp/mapp/kg/assets/consolenew/*'
+                    // sshPut remote: remote, from: './console_new_4/dist', into: '/data2/kg/jenkins/jenkins_home/workspace/test-mvn@3/kg.parent/kg.web/src/main/resources/META-INF/resources/necp/mapp/kg/assets/consolenew'
+                    
+                   
+                    
+                //     def remote1 = [:]
+                //     remote1.name = 'root'
+  	             //   remote1.host = '10.121.61.3'
+                //     remote1.allowAnyHosts = true
+                //     withCredentials([sshUserPrivateKey(credentialsId: 'bdm', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
+                //         remote1.user = userName
+                //         remote1.identityFile = identity
+                //         sshCommand remote: remote1, command:'pwd'
+                //         sshPut remote: remote1, from: './kg.parent/kg.boot/target/necp.mapp.kg.boot-2.0.2.s0.jar', into: '/data2/kg'
+                //         // sshCommand remote: remote1, command: "cd /data/ygsoft/kg && echo -e '\n' | bash start_kg.sh restart"
+                //     }
+                }
+            }
+        }
+    }
+}
