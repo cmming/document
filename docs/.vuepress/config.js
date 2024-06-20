@@ -238,10 +238,11 @@ function getBlogSidebar(type) {
                         ['./spring/restemplate', 'restemplate'],
                         ['./spring/validate', '参数校验'],
                         ['./spring/cache', '缓存'],
-                        ['./spring/logback', '线程'],
+                        ['./spring/logback', '日志'],
                         ['./spring/thead', '线程'],
                         ['./spring/mapstruct', 'mapstruct'],
                         ['./spring/rabbitmq', 'rabbitmq'],
+                        ['./spring/remoteDebug', '远程调试'],
                     ]
                 },
                 {

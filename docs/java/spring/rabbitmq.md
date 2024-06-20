@@ -314,12 +314,11 @@ RabbitMQ的消息重试机制有两种：消息的延迟队列和消息的死信
 
 #### 5.1. 防止消息丢失
 
-消息的延迟队列是指将消息发送到延迟队列，然后延迟队列在指定的时间后将消息发送给队列，延迟队列可以设置多个，每个延迟队列的延迟时间可以不同，延迟队列的消息可以设置过期时间，如果消息过期，那么延迟队列就会将消息发送给队列，延迟队列的消息可以设置死信队列，如果消息过期，那么延迟队列就会将消息发送给死信队列。
+>延迟队列加死信队列： 当消息超时、或者消息处理过程中出现异常的时候，消息会自动发送给死信队列
 
 ```java
 
-// 添加延迟队列插件
-rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
 
 
 // 配置死信队列 （当延迟队列出现超时或者异常的情况下会将信息转发到死信队列中）
@@ -334,14 +333,16 @@ public void delayDeadQueue(String message) {
 
 
 @RabbitListener(bindings = @QueueBinding(
+        // DLK
         exchange = @Exchange(value = "delay_exchange"),
         key = "delay_key",
+        // DLX
         value = @Queue(value = "delay_queue", durable = "true", arguments = {
                 // 声明死信交换机
                 @org.springframework.amqp.rabbit.annotation.Argument(name = "x-dead-letter-exchange", value = "delay_dead_exchange"),
                 // 声明死信路由键
                 @org.springframework.amqp.rabbit.annotation.Argument(name = "x-dead-letter-routing-key", value = "delay_dead_key"),
-                // 声明队列消息过期时间
+                // 声明队列消息过期时间 TTL
                 @org.springframework.amqp.rabbit.annotation.Argument(name = "x-message-ttl", value = "3000", type = "java.lang.Integer")
         })
 ))
@@ -358,9 +359,64 @@ public void delayQueue(String message) throws InterruptedException {
 
 #### 5.2. 消息的延迟队列
 
+
 > 使用场景：1、消息的延迟队列适用于消息的延迟处理，比如：订单的超时未支付，那么就可以将订单发送到延迟队列，然后延迟队列在指定的时间后将订单发送给队列，队列就可以取消订单了。2、消息延迟重试，比如：订单的支付失败，那么就可以将订单发送到延迟队列，然后延迟队列在指定的时间后将订单发送给队列，队列就可以重新支付订单了。
 
 
+```java
+
+// 添加延迟队列插件
+rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
+
+    // 定义支持设置延迟事件的队列
+    @RabbitListener(bindings = @QueueBinding(
+            exchange = @Exchange(value = "test_delay_exchange", type = "x-delayed-message", arguments = {
+                    // x-delayed-type 声明队列类型
+                    @Argument(name = "x-delayed-type", value = ExchangeTypes.DIRECT)
+            }),
+            key = "test_delay_key",
+            value = @Queue(value = "test_delay_queue", durable = "true")
+    ))
+    public void testDelayQueue(String message) throws InterruptedException {
+        log.info("test_delay_queue MqReceiver: {}", message);
+        // 使用场景：根据message 获取订单信息，如果还没有支付，取消订单
+    }
+
+    // 设置消息延迟多久发送
+    @GetMapping("sendTestDelayQueue")
+    public void sendTestDelayQueue() {
+        rabbitTemplate.convertAndSend( "test_delay_exchange","test_delay_key", "now" + new Date(),
+                message -> {
+                    // 设置延迟毫秒值
+                    message.getMessageProperties().setDelay(20000);
+                    return message;
+                });
+    }
+
+
+
+```
+
+两种方式比较：更加推荐使用第二种，第一种会出现时序问题。
+
+时序问题：正常的队列应该是先进先出，由于引入过期时间（过期时间越短会越先执行）导致消息执行的顺序被过期时间影响。如果需求严格控制消息执行的顺序，那么TTL加DLX不适合。
+
+时序问题分三种：1、消息的 TTL 过期：如果消息的 TTL 设置为一定的时间，当消息的 TTL 过期时，消息将被标记为 "dead letter" 并发送到 DLX。然后，DLX 可能会立即将消息重新路由到 DLQ（Dead Letter Queue）中，或者根据其他的路由规则将消息发送到其他队列。这可能会导致消息的顺序性发生变化，因为过期时间较短的消息可能会被优先处理。
+
+2、消息被消费者拒绝：
+如果消费者在处理消息时拒绝（reject）了消息，消息可能会被重新投递到队列。如果消息设置了 TTL，重新投递的消息仍然会保持原来的 TTL 值。这可能导致消息在重新投递后仍然很快地过期，并最终进入 DLQ。因此，在重新投递时，需要确保消息的 TTL 适当调整，以避免过早进入 DLQ
+3、 消息被重新排序：
+当 DLX 和 TTL 结合使用时，如果消息在过期前被重新投递或重新路由到其他队列，可能会导致消息的顺序发生变化。这是因为不同消息的 TTL 可能不同，导致它们被处理的时间顺序发生变化。
+
+
 ### 6. RabbitMQ的消息幂等性
+
+
+
+
+### 7. 总结
+
+使用rabbitmq最佳使用方式：推荐同时使用生产者确认和消费者确认，保证消息能被正常投递和消费处理。对于异常的数据
 
 
